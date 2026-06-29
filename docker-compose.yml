@@ -22,11 +22,11 @@ services:
     stdin_open: true
     tty: true
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '2.0'
-          memory: 2048M
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '2.0'
+    #       memory: 2048M
 
 volumes:
   node_modules:
