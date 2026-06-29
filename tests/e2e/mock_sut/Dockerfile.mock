@@ -1,0 +1,21 @@
+FROM node:20-alpine
+
+RUN apk add --no-cache --update bash procps curl coreutils
+
+WORKDIR /app
+
+# Create directories that are mapped or used by watcher
+RUN mkdir -p /app/tasks/logs /home/node/.gemini /home/node/.ssh
+
+# Copy mock files to /usr/local/bin so they are not overwritten by volume mount
+COPY mock_agy.sh /usr/local/bin/mock_agy.sh
+COPY mock_watcher.sh /usr/local/bin/mock_watcher.sh
+COPY mock_server.js /usr/local/bin/mock_server.js
+
+# Setup execution permissions and links
+RUN chmod +x /usr/local/bin/mock_agy.sh /usr/local/bin/mock_watcher.sh /usr/local/bin/mock_server.js \
+    && ln -s /usr/local/bin/mock_agy.sh /usr/local/bin/agy
+
+EXPOSE 3000
+
+CMD ["node", "/usr/local/bin/mock_server.js"]

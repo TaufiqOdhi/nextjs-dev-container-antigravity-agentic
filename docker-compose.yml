@@ -1,0 +1,33 @@
+services:
+  nextjs-dev-container:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nextjs-dev-container
+    user: "node"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - ./node_modules:/app/node_modules
+      - ./tasks:/app/tasks
+      - ~/.gitconfig:/home/node/.gitconfig:ro
+      - ~/.ssh:/home/node/.ssh:ro
+      - ./.gemini:/home/node/.gemini
+    working_dir: /app
+    environment:
+      - NODE_ENV=development
+      - WATCHER_INTERVAL=5
+    command: npm run dev
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 2048M
+
+volumes:
+  node_modules:
+    driver: local

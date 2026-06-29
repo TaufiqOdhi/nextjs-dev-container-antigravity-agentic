@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  nextjs-dev-container:
+    build:
+      context: .
+      dockerfile: Dockerfile.mock
+    container_name: nextjs-dev-container
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./../../tasks:/app/tasks
+      - ./../../.gemini:/home/node/.gemini
+      - ./../../:/app
+    environment:
+      - NODE_ENV=development
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
