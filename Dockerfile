@@ -23,10 +23,6 @@ RUN mkdir -p /home/node/.gemini /home/node/.ssh \
     /app/tasks/inbox /app/tasks/done /app/tasks/failed /app/tasks/logs && \
     chown -R node:node /home/node /app/tasks
 
-# Copy watcher scripts and make executable
-# COPY watcher/ /app/watcher/
-# RUN chmod +x /app/watcher/*.sh
-
 # Copy entrypoint (will be overridden by bind mount at runtime — that's intentional
 # so changes to entrypoint.sh don't require a rebuild)
 COPY entrypoint.sh /app/entrypoint.sh

@@ -27,8 +27,8 @@ The project runs as a Next.js web application inside a Docker container, integra
 |---|------|-------|-------|--------------|--------|-----------------|
 | 0 | E2E Testing Track | E2E Testing | Design E2E test suite (Tiers 1-4) & publish `TEST_READY.md` | None | DONE | a865d348-6a45-47c8-9b36-7314c07d2822 |
 | 1 | Docker Env & Next.js Init | Implementation | Build Dockerfile/compose, init Next.js with Zustand/SWR/Tailwind/shadcn | None | DONE | Worker: f7d25ebe-0429-42e0-b4fc-0969de412cbf |
-| 2 | Task Watcher Integration | Implementation | Implement automated task watcher script inside container | M1 | IN_PROGRESS | TBD |
-| 3 | Persistence config | Implementation | Configure and verify SSH/git and Antigravity volume mounts | M1 | PLANNED | TBD |
+| 2 | Task Watcher Integration | Implementation | Implement automated task watcher script inside container | M1 | DONE | — |
+| 3 | Persistence config | Implementation | Configure and verify SSH/git and Antigravity volume mounts | M1 | DONE | — |
 | 4 | E2E Integration Test Pass | Implementation | Run E2E tests against implementation and fix bugs (Tiers 1-4) | M0, M2, M3 | PLANNED | TBD |
 | 5 | Adversarial Hardening | Implementation | Perform white-box analysis, generate adversarial tests (Tier 5) & fix | M4 | PLANNED | TBD |
 
