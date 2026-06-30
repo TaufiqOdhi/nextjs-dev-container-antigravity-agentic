@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAppStore } from "@/store/useAppStore";
 import { useTasks, Task } from "@/hooks/useTasks";
 
@@ -8,6 +8,11 @@ export default function Home() {
   const { currentTask, setCurrentTask, logs, addLog } = useAppStore();
   const { tasks, isLoading, isError, refresh } = useTasks();
   const [newLogText, setNewLogText] = useState("");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleAddTaskLog = (e: React.FormEvent) => {
     e.preventDefault();
@@ -80,7 +85,7 @@ export default function Home() {
             <div className="flex-1 overflow-y-auto bg-slate-950 border border-slate-800 rounded p-4 font-mono text-xs text-indigo-300 space-y-2 mb-4">
               {logs.map((log, idx) => (
                 <div key={idx} className="border-b border-slate-900 pb-1">
-                  <span className="text-slate-600">[{new Date().toLocaleTimeString()}]</span> {log}
+                  <span className="text-slate-600">[{mounted ? new Date().toLocaleTimeString() : ""}]</span> {log}
                 </div>
               ))}
               {currentTask && (
