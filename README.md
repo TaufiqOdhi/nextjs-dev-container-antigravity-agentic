@@ -66,3 +66,10 @@ The watcher will pick it up, execute it via `agy`, and move the file to `tasks/d
 - **AI Agent**: Antigravity CLI (`agy`)
 - **Container**: Docker + Docker Compose
 - **Task Automation**: Bash watcher script with polling
+
+## Optional Configuration
+### Antigravity CLI
+Install the Antigravity CLI using these command inside running container:
+```
+curl -fsSL https://antigravity.google/cli/install.sh | bash
+```

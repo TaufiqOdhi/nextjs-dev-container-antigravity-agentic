@@ -8,9 +8,6 @@ RUN apt update && apt install -y \
     inotify-tools \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Antigravity CLI as node user
-RUN curl -fsSL https://antigravity.google/cli/install.sh | bash
-
 # Set working directory to /app
 WORKDIR /app
 
