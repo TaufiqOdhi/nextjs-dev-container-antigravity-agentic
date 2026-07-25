@@ -19,7 +19,7 @@ services:
     environment:
       - NODE_ENV=development
       - WATCHER_INTERVAL=5
-    command: npm run dev
+    command: sleep infinity
     stdin_open: true
     tty: true
     restart: unless-stopped

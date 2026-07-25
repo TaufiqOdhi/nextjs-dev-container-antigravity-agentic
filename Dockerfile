@@ -35,4 +35,4 @@ EXPOSE 3000
 
 # Entrypoint handles npm install on boot, then runs the CMD
 ENTRYPOINT ["bash", "/app/entrypoint.sh"]
-CMD ["npm", "run", "dev"]
+CMD ["sleep", "infinity"]
