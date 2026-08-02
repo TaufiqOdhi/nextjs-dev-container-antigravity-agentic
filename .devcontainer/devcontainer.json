@@ -1,0 +1,73 @@
+{
+  "name": "Next.js Dev Container",
+
+  // Build from the project Dockerfile
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+
+  // Run as the non-root 'node' user defined in the Dockerfile
+  "remoteUser": "node",
+  "containerUser": "node",
+
+  // Set /app as the workspace folder (matches WORKDIR in Dockerfile)
+  "workspaceFolder": "/app",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind,consistency=cached",
+
+  // Forward the Next.js dev server port
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js Dev Server",
+      "onAutoForward": "notify"
+    }
+  },
+
+  // Additional volume mounts mirroring docker-compose.yml
+  "mounts": [
+    "source=${localWorkspaceFolder}/node_modules,target=/app/node_modules,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/tasks,target=/app/tasks,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.gemini,target=/home/node/.gemini,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.local,target=/home/node/.local,type=bind,consistency=cached",
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/node/.gitconfig,type=bind,consistency=cached,readonly",
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached,readonly"
+  ],
+
+  // Environment variables
+  "containerEnv": {
+    "NODE_ENV": "development",
+    "WATCHER_INTERVAL": "5"
+  },
+
+  // Run entrypoint.sh on container creation to ensure node_modules are installed
+  "postCreateCommand": "bash /app/entrypoint.sh true",
+
+  // Override the default CMD so the container stays alive for VS Code
+  "overrideCommand": true,
+
+  // VS Code customizations
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "typescript.tsdk": "/app/node_modules/typescript/lib",
+        "typescript.enablePromptUseWorkspaceTsdk": true
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "formulahendry.auto-rename-tag",
+        "christian-kohler.path-intellisense",
+        "ms-vscode.vscode-typescript-next",
+        "tomoki1207.pdf"
+      ]
+    }
+  }
+}
