@@ -4,3 +4,4 @@ node_modules/*
 workspaces/
 .local/
 .gemini/
+.codex/

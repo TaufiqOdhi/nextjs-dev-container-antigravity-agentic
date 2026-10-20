@@ -15,6 +15,7 @@ services:
       - ~/.ssh:/home/node/.ssh:ro
       - ./.gemini:/home/node/.gemini
       - ./.local:/home/node/.local
+      - ./.codex:/home/vscode/.codex
     working_dir: /app
     environment:
       - NODE_ENV=development

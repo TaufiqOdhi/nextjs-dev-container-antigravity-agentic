@@ -73,3 +73,10 @@ Install the Antigravity CLI using these command inside running container:
 ```
 curl -fsSL https://antigravity.google/cli/install.sh | bash
 ```
+### Codex CLI
+Inside the container, Run the following command:
+
+```bash
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
+codex --version
+```

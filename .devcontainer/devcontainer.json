@@ -30,6 +30,7 @@
     "source=${localWorkspaceFolder}/tasks,target=/app/tasks,type=bind,consistency=cached",
     "source=${localWorkspaceFolder}/.gemini,target=/home/node/.gemini,type=bind,consistency=cached",
     "source=${localWorkspaceFolder}/.local,target=/home/node/.local,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.codex,target=/home/vscode/.codex,type=bind,consistency=cached",
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/node/.gitconfig,type=bind,consistency=cached,readonly",
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached,readonly"
   ],
